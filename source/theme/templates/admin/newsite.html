@@ -1,0 +1,42 @@
+{% extends './simple.html' %}
+
+{% block bodyClass %}setup{% endblock %}
+{% block content %}
+<div class='container full-page'>
+  <div class='row login-form'>
+    <div class='form-box'>
+      <form action='/admin/setup' method='post' class='login-panel'>
+        <h1>Create a new site</h1>
+        <div class='form-group'>
+          <input class='form-control' name='sitename' type='text' value='' placeholder='Site Name'/>
+        </div>
+        <div class='form-group'>
+          <input class='form-control' name='email' type='text' value='' placeholder='Administrator Email Address'/>
+        </div>
+        <div class='form-group'>
+          <input class='form-control' name='password' id='pwdcheck' type='text' value='' placeholder='Secure Password'/>
+        </div>
+        <div class='form-group'>
+          <label style="width:100%" >Domains to be used for this site one per line.
+            <textarea class='form-control' name='password' type='text' value='' style="width:100%" placeholder='' rows='12'>{{domain}}</textarea>
+          </label>
+        </div>
+        <div class='row'>
+          <div class='md-col-12 text-center'>
+            <input class='button button-primary'  value='Login'  type='submit'/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+$(document).ready(function(){
+  PasswordStrength(document.getElementById('pwdcheck'));
+});
+{% endblock %}
+
+{% block javascriptFiles %}
+{% endblock %}

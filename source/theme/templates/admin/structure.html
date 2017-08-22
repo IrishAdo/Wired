@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Contento.mobi - Turn on your mobile marketing strategy{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if dateCreated %}
+  <meta name="date"	content="GMT">
+  <meta name="last-modified" content="GMT">
+  <meta http-equiv="last-modified" content="GMT">
+  {% endif %}
+
+  {% if canonical %}
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="alternate" href="{{ canonical }}" hreflang="en" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+  {% endif %}
+  {% if description %}
+  <meta name="description" content="{{ description }}">
+  {% endif %}
+ 
+  <link rel="icon" href="/favicon.ico"><!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/offline/bootstrap-multiselect.css">
+  <link rel="stylesheet" type="text/css" href="/css/admin-201605121421.css">
+</head>
+<body class='{% block bodyClass %}{% endblock %}'>
+<div class="container-fluid">
+  <div class='row'>
+    <div id='topleft' class='col-sm-3 col-md-2'><div class="content">Editorial Suite</div></div>
+    <div id='topright' class='col-sm-9 col-md-10 col-md-offset-2'>
+      <div class='title col-md-6'>{{ session.clientname }}</div>
+      <div class='profile col-md-6 text-right'>
+        <a href="/contact-us" class="mail-icon info-icon" style="padding: 5px; color: white; border-radius: 100%; margin-right: 10px; "><!--<i class="fa fa-envelope"></i>--></a>
+        <a href='/faqs/list' class="notify-icon info-icon" style="padding: 5px 7px; color: white; border-radius: 100%; margin-right: 10px; min-width: 20px;"><!--<i class="fa fa-lightbulb-o fa-lg"></i>--></a>
+        <img src="{% if session.user.profile %}/{{session.user.profile}}{% endif %}{% if !session.user.profile%}/images/icons/profile.jpg{% endif %}" style="width: 35px; height: 35px; border-radius: 100%;">
+        <div class="dropdown">{{session.user.contactname}} <i class="fa fa-angle-down"></i>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/account/profile/{{session.user.uuid}}/edit">Edit Your Profile</a>
+            </li>
+            <li>
+              <a href="/account/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class='row'>
+    <div class='col-sm-3 col-md-2 sidebar'>
+      <ul class='sidebar-menu'>
+      <ul>
+        {% if session.isAdmin==1 %}
+        <li class='icon-overview list-content'><a href='/client/switch' class="switch-icon">Switch client</a></li>
+        {% endif %}
+        {% if session.clientId != undefined %}
+        <li class='icon-overview overview-icon{% if sidebar == 'overview' %} active{% endif %}'>
+        <a href='/dashboard'><span class="glyphicons glyphicons-eye-open"></span><!--<i class="fa fa-eye"></i>--> Overview</a>
+        </li>
+        <li class="icon-profile list-content {% if sidebar == 'addProfile' || sidebar == 'listProfile'%}showChildren{% endif %} hasChildren" style="cursor: pointer;">
+          <div class="parent"><div class='text'><i class="fa fa-users"></i> Manage profiles</div></div>
+          <ul class="sub-menu">
+            <li class="icon-admin {% if sidebar == 'addProfile' %}active{% endif %}"><a href='/account/profile/add'><i class="fa fa-plus"></i> Add Profile</a></li>
+            <li class="icon-admin {% if sidebar == 'listProfile' %}active{% endif %}"><a href='/account'><i class="fa fa-list"></i> List Profile</a></li>
+          </ul>
+        </li>
+        <li class="icon-users manage-user-icon {% if sidebar == 'addUser' || sidebar == 'listUser' || sidebar == 'importUser'%}showChildren{% endif %} hasChildren" style="cursor: pointer;">
+          <div class="parent"><div class='text'><!--<i class="fa fa-users"></i>--> Manage your users</div></div>
+          <ul class="sub-menu">
+            <li class="icon-admin {% if sidebar == 'addUser' %}active{% endif %}"><a href='/users/add'><i class="fa fa-plus"></i> Add Users</a></li>
+            <li class="icon-admin {% if sidebar == 'listUser' %}active{% endif %}"><a href='/users/list'><i class="fa fa-list"></i> List Users</a></li>
+            <li class="icon-admin {% if sidebar == 'importUser' %}active{% endif %}"><a href='/users/import'><i class="fa fa-file"></i> Import Users</a></li>
+          </ul>
+        </li>
+        <li class="icon-content manage-app-icon {% if sidebar == 'userType' || sidebar == 'author' || sidebar == 'channel' || sidebar=='topic' || sidebar == 'page' || sidebar == 'notification' || sidebar == 'author'%}showChildren{% endif %} hasChildren"  style="cursor: pointer;">
+          <div class="parent"><div class='text'><!--<i class="fa fa-tablet"></i>--> Manage your app</div></div>
+          <ul class="sub-menu">
+            <li class="icon-admin icon-group-administration  {% if sidebar == 'userType' %}active{% endif %}"><a href='/user-types/list'>User Group Administration</a></li>
+            <li class="icon-admin icon-author-administration {% if sidebar == 'author' %}active{% endif %}"><a href='/authors/list'>Author Administration</a></li>
+            <li class="icon-client icon-channel-administration {% if sidebar == 'channel' %}active{% endif %}"><a href='/channels/list'>Channel Administration</a></li>
+            <li class="icon-user icon-topic-administration {% if sidebar == 'topic' %}active{% endif %}"><a href='/topics/list'>Topic Administration</a></li>
+            <li class="icon-user icon-page-administration {% if sidebar == 'page' %}active{% endif %}"><a href='/pages/list'>Page Administration</a></li>
+          </ul>
+        </li>
+        <li class="icon-content manage-content-icon {% if sidebar == 'listContent'%}showChildren{% endif %}">
+          <a href='/content/article/list'> Manage your content</a> 
+        </li>
+        <li class='icon-reports analytics-icon'>
+          <a href='/reports'>Analytics &amp; Reporting</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class='col-sm-9 col-md-10 col-md-offset-2 content' style="position: initial;">
+      <div class='breadcrumb'>
+        {% block fa-icon %}
+        <div class='text breadcrumb-overview-icon {% block icon %}icon-overview{% endblock %}'>{% block breadcrumb %}Overview{% endblock %}</div>
+        {% endblock %}
+      </div>
+      <div class='main'>
+        <div class="content-area">
+          {% block content %}{% endblock %}
+          {% block pagination %}
+			{% if pagination.maxPages>1 %}
+
+				<div class="row">
+				<div class='col-md-12'>
+					<nav class="clearfix">
+						<ul class="pagination pull-right">
+							{% for page in pagination.pages %}
+							<li class="{% if page.pageIndex==pagination.currentPage %}active{% endif %}">
+								<a href="{{ page.url }}">{{ page.label | raw }} <span class="sr-only">(current)</span></a>
+							</li>
+							{% endfor %}
+						</ul>
+					</nav>
+				</div>
+				</div>
+			{% endif %}
+		  {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if isLoggedIn!=1 %}
+
+{% endif %}
+
+<script type="text/javascript">
+function getMonthName(i){
+    var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+    return month[i];
+}    
+</script>
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<xscript src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></xscript>
+<!-- Latest compiled and minified JavaScript -->
+<xscript src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></xscript>
+<script src="/offline/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="/offline/bootstrap.min.js"></script>
+<script src="/offline/bootstrap-multiselect.js"></script>
+<script src="/js/script.gen.js"></script>
+<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+<script>
+    webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+</script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+{% block javascriptFiles %}{% endblock %}
+<script>
+      {% block javascript %}{% endblock %}
+      </script>
+</body>
+</html>

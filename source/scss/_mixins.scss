@@ -1,0 +1,66 @@
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin m-transform($arg1, $arg2:null, $arg3:null) {
+	   -moz-transform: $arg1, $arg2, $arg3;
+	     -o-transform: $arg1, $arg2, $arg3;
+	    -ms-transform: $arg1, $arg2, $arg3;
+	-webkit-transform: $arg1, $arg2, $arg3;
+            transform: $arg1, $arg2, $arg3;
+}
+
+@mixin m-transition($arg1, $arg2:null, $arg3:null ) {
+       -moz-transition: $arg1, $arg2, $arg3;
+	     -o-transition: $arg1, $arg2, $arg3;
+	    -ms-transition: $arg1, $arg2, $arg3;
+	-webkit-transition: $arg1, $arg2, $arg3;
+            transition: $arg1, $arg2, $arg3;
+}
+
+@mixin m-max-width($max-width:$main-max-width) {
+	max-width: $max-width;
+	padding-left: 0;
+	padding-right: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+
+}
+
+@mixin btn-hover($arg1, $arg2:null, $arg3:null) {
+	background: $arg1;
+	color: $arg2;
+}
+
+@mixin create_button($backgroundColour, $textColour, $borderData, $backgroundHoverColour, $textHoverColour, $borderHoverData) {
+	background-color: $backgroundColour;
+	color: $textColour;
+	border:$borderData;
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:5px;
+	padding-bottom:5px;
+	&:hover{
+		background-color: $backgroundHoverColour;
+		color: $textHoverColour;
+		border: $borderHoverData;
+	}
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}

@@ -1,0 +1,105 @@
+/**
+
+--------------------
+TABLE OF CONTENTS
+--------------------
+Index
+--------------------
+01 FONT SIZES
+02 FONT FAMILY
+03 FONT WEIGHT
+04 COLORS
+05 THEME VARIABLES
+*/
+
+// =============================================================================
+// 01 FONT SIZES
+// =============================================================================
+// The font size set on the root html element.
+$base-font-size:	16px;
+
+// This line-height determines the basic unit of vertical rhythm.
+$base-line-height:	24px;
+
+$h1-font-size: 2	* $base-font-size;
+$h2-font-size: 1.5	* $base-font-size;
+$h3-font-size: 1.17	* $base-font-size;
+$h4-font-size: 1	* $base-font-size;
+$h5-font-size: 0.83	* $base-font-size;
+$h6-font-size: 0.67	* $base-font-size;
+
+// =============================================================================
+// 02 FONT FAMILIES
+// =============================================================================
+
+// Base theme fonts - DO NOT DELETE!
+$PrimaryFontFamily: 'Noto Sans', serif;
+
+// Theme specific font family
+
+// Now create some variables for the font stacks we want to use on this site.
+$base-font-family: 		$PrimaryFontFamily; // The font family set on html.
+$font-body:				$PrimaryFontFamily;
+$font-monospace:		$PrimaryFontFamily;
+
+// =============================================================================
+// 03 FONT WEIGHT
+// =============================================================================
+$font-light: 300;
+$font-reg: 400;
+$font-semi-bold: 600;
+$font-bold: 700;
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 30px;
+
+// Tab styling.
+$tabs-container-bg:	#fff;
+$tabs-border: #bbb;
+$admin-tab-hover: #666;
+
+
+@function color($key) {
+	@if map-has-key($colors, $key) {
+		@return map-get($colors, $key);
+	}
+}
+
+// =============================================================================
+// 04 COLORS
+// =============================================================================
+$white: #fff;
+$black:	#000;
+$colors: (
+	black: #000,
+	white: #fff,
+	off-black: #333,
+	grey-lightest:#ebebeb,
+	grey-lighter:#cccccc,
+	grey-light: #999999,
+	grey-medium:#3d3d3d,
+	grey-dark: #666,
+	blue-lightest:#2c6db1,
+	blue-lighter:#1b6ab2,
+	blue-light:#045691,
+	blue-dark:#1d396e,
+	blue-darker:#002841,
+	blue-darkest:#0F2a3F,
+	teal:#287071,
+	green:#007321,
+	yellow:#ea940d,
+	red-lightest:#ee3124,
+	red-light:#D51016,
+	red-dark:#B01917,
+	red-darkest:#951813,
+	red-deep: #c00000,
+);
+
+// =============================================================================
+// 05 THEME VARIABLES
+// =============================================================================
+$sidebar-width: 25%;
+$sidebar-column-width: 68%;
+$sidebar-margin: 2%;
+$main-max-width: 1200px;
+$themeFont: 'Source Sans Pro', sans-serif; // Font for the TP_Boilerplate.

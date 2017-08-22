@@ -1,0 +1,14 @@
+body.setup{
+	background: image-url('backgrounds/surf.jpg') 50% 50% no-repeat;
+	background-size: cover;
+
+	.full-page{
+		height: 100%;
+		.login-form{
+			@include m-max-width(800px);
+			margin-top:100px;
+			background-color: rgba(255,255,255,0.7);
+			padding:30px;
+		}
+	}
+}

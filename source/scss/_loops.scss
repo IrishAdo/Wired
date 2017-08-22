@@ -1,0 +1,22 @@
+
+// Create multiple columns.
+$columns: 6;
+
+@for $i from 1 through $columns {
+	.col-#{$i} {
+		width: ((1% * 100) / $i);
+		float:left;
+		@if($lang == "ar-ae"){
+			float:right;
+		}
+		color:inherit;
+		p{
+			padding-left: 1rem;
+			padding-right:1rem
+		}
+	}
+
+	.col-1 {
+		float: none;
+	}
+}

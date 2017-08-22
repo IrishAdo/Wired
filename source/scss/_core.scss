@@ -1,0 +1,170 @@
+/**
+*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+// =============================================================================
+// 01 CORE DEFAULT STRUCTURE
+// =============================================================================
+// Fonts
+:root {
+font-size: 16px;
+font-family: $base-font-family;
+}
+
+.container{
+    @include m-max-width();
+}
+
+.cta-wrapper {
+    transition: all 1s;
+    display: block;
+    min-height: 200px;
+    text-align: center;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+div,
+section,
+input,
+textarea,
+fieldset {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    font-size: 100%;
+}
+
+body {
+    font-family: $base-font-family;
+    font-weight: $font-reg;
+    color: color(black);
+    overflow-x: hidden;
+
+}
+
+ul {
+    padding-left: 0;
+    padding-right: 0;
+    margin:0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $base-font-family;
+    color: inherit;
+    margin: 0 0 0.5em;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 2.25rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 1em;
+    margin: 0 0 1em;
+    line-height: 1.625em;
+    color: color(grey-medium);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+    font-family: $base-font-family;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    font-style: italic;
+    font-family: $base-font-family;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    font-style: italic;
+    font-family: $base-font-family;
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+    font-family: $base-font-family;
+}
+
+.clear {
+    clear: both;
+    overflow: auto;
+}
+
+superscript {
+    font-size: 0.6em;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+
+%clearfix,
+.clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    &:after {
+        visibility: hidden;
+    }
+}
+
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align:center;
+}
+.text-left{
+    text-align: left;
+}
+.text-justify{
+    text-align: justify;
+}
+// =============================================================================
+// 06 SUB MENU STYLE
+// =============================================================================
+// =============================================================================
+// 07 ICONS
+// =============================================================================
+// =============================================================================
+// 08 BANNERS
+// =============================================================================
+.button-primary{
+    @include create_button(#00A7A6,white,1px solid #00A7A6, white,#00A7A6,1px solid #00A7A6);
+}
