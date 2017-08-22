@@ -154,6 +154,26 @@ module.exports = function(){
 	        });
 	    }
 	}
+
+
+	function checkDomain (req,res,next){
+		// console.log(req.headers.host);
+        var sites = app.get('getModel')('sites');
+        sites.findOne({ domains : { $in :[ req.headers.host ]} }, function(err,doc){
+            console.log(err);
+            console.log(doc);
+            res.json({
+                success: true
+            });
+        });
+        // var newSite =  new sites();
+        // newSite.save();
+        // app.get('pages').faq.find(function(err, docs) {
+        //     if (err) {//     } else {
+               
+        //     }
+        // });
+    }
 	return {
 		isAuthenticated:isAuthenticated,
 		isAdministrator:isAdministrator,

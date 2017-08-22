@@ -1,7 +1,7 @@
 require 'compass/import-once/activate'
 
 
-# TODO - replace with the gruntfile using wellington
+# TODO - replace with the gruntfile using wellington x10 spped increase.
 
 http_path = "/"
 css_dir = "resources/css"

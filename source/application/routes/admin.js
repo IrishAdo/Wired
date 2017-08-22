@@ -26,7 +26,7 @@ module.exports = function(app) {
         });
     });
     /**
-     * This route will display the login form.
+     * This route will process the login form.
      *
      * VERB :: POST
      * 
@@ -70,13 +70,9 @@ module.exports = function(app) {
         }
     });
     /**
-     * This route will retrieve a blog and import the individual posts into the channel
+     * This route will register a new site
      *
-     * VERB :: GET
-     * 
-     * SECURITY ::  isAuthenticated  
-     * 
-     * @method GET::/api/blogs/retrieve/<channelId>
+     * @method GET::/admin/registerNewSite'
      * @return {Object} status should have a value of true
      */
      app.get('/admin/registerNewSite',  function(req, res) {

@@ -12,13 +12,13 @@ Define the module
 */
 module.exports = function(app) {
 
-    // --------------------------------------------------------------------------------
-    // API: http://localhost:8080/api/faqs
-    // Method: GET
-    // AUTH : YES
-    // Desc: This function will retrieve your Faqs
-    // --------------------------------------------------------------------------------
-    app.get('/admin/test', //app.get('security').isAuthenticated, 
+    /*
+    Test function to create a new section with metadata 
+    */
+
+    app.get('/faq/test', 
+
+    //app.get('security').isAuthenticated, 
     function(req, res) {
         // console.log(req);
         //    
